@@ -1,12 +1,19 @@
 //import liraries
+import { Stack, useLocalSearchParams } from 'expo-router';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 // create a component
 const ProductDetailsScreen = () => {
+    const {id} = useLocalSearchParams();
+
     return (
         <View style={styles.container}>
-            <Text>ProductDetailsScreen</Text>
+            <Stack.Screen 
+            options={{title: "Details: "  + id}}
+            ></Stack.Screen>
+
+            <Text style={{fontSize: 20}}>ProductDetailsScreen for id: {id}</Text>
         </View>
     );
 };
