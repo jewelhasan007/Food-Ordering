@@ -1,13 +1,19 @@
 //import liraries
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { FlatList, Platform, StyleSheet, View } from 'react-native';
+import CartListItem from '../components/CartListItem';
+import { useCart } from '../providers/CartProvider';
 
 // create a component
 const CartScreen = () => {
+    const {items} = useCart()
+    
     return (
         <View style={styles.container}>
-            <Text>CartScreen</Text>
+          <FlatList data={items} 
+          renderItem={({item}) => <CartListItem cartItem={item}></CartListItem>} 
+          contentContainerStyle={{padding: 10, gap: 10}}></FlatList>
               <StatusBar style={Platform.OS === 'web' ? 'light' : 'auto'} />
         </View>
     );
