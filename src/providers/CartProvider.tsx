@@ -33,7 +33,8 @@ const CartProvider = ({children} : PropsWithChildren) => {
 
     // updateQuantity
  const updateQuantity = (itemId: string, amount: -1 | 1) => {
-console.log(itemId, amount)
+const updateItems = items.map(item => item.id != itemId ? item : {...item, quantity: item.quantity + amount})
+setItems(updateItems)
  };
 
     return (
